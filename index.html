@@ -54,7 +54,6 @@
             overflow-x: hidden;
         }
 
-        /* ─── NOISE TEXTURE OVERLAY ─── */
         body::before {
             content: '';
             position: fixed; inset: 0;
@@ -62,7 +61,7 @@
             pointer-events: none; z-index: 9999; opacity: 0.4;
         }
 
-        /* ─── NAVIGATION ─── */
+        /* ─── NAV ─── */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             background: var(--nav-bg);
@@ -70,695 +69,384 @@
             border-bottom: 1px solid var(--border);
             transition: background 0.35s ease, border-color 0.35s ease;
         }
-
         .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            padding: 0 2rem;
-            height: 60px;
-            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            height: 60px; display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-logo {
-            font-family: var(--font-display);
-            font-weight: 800; font-size: 1.1rem;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            text-decoration: none;
+            font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+            letter-spacing: -0.02em; color: var(--text); text-decoration: none;
         }
-
         .nav-logo span { color: var(--accent); }
-
-        .nav-links {
-            display: flex; align-items: center; gap: 0.25rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
         .nav-links a {
-            font-family: var(--font-body);
-            font-size: 0.82rem; font-weight: 500;
+            font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
             letter-spacing: 0.04em; text-transform: uppercase;
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 0.4rem 0.75rem;
-            border-radius: 6px;
+            color: var(--text-muted); text-decoration: none;
+            padding: 0.4rem 0.75rem; border-radius: 6px;
             transition: color 0.2s, background 0.2s;
         }
-
         .nav-links a:hover { color: var(--text); background: var(--surface-2); }
-
-        /* Theme toggle */
         .theme-btn {
-            width: 36px; height: 36px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--surface);
-            cursor: pointer;
+            width: 36px; height: 36px; border: 1px solid var(--border);
+            border-radius: 8px; background: var(--surface); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1rem;
-            color: var(--text-muted);
-            transition: all 0.2s;
-            margin-left: 0.5rem;
+            color: var(--text-muted); transition: all 0.2s; margin-left: 0.5rem;
         }
         .theme-btn:hover { background: var(--surface-2); color: var(--text); }
+        .theme-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 
         /* ─── HERO ─── */
         .hero {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
         }
-
         .hero-bg {
             position: absolute; inset: 0; z-index: 0;
-            background: 
+            background:
                 radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,80,30,0.08) 0%, transparent 70%),
                 radial-gradient(ellipse 40% 60% at 20% 70%, rgba(26,74,107,0.06) 0%, transparent 60%);
         }
-
         .hero-grid-bg {
             position: absolute; inset: 0; z-index: 0;
-            background-image: 
+            background-image:
                 linear-gradient(var(--border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 48px 48px;
-            opacity: 0.35;
+            background-size: 48px 48px; opacity: 0.35;
         }
-
         .hero-inner {
             max-width: 1200px; margin: 0 auto; width: 100%;
             position: relative; z-index: 1;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
         }
-
         .hero-tag {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid rgba(201,80,30,0.3);
-            background: rgba(201,80,30,0.06);
-            padding: 0.35rem 0.75rem;
-            border-radius: 4px;
-            margin-bottom: 1.5rem;
+            font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--accent); border: 1px solid rgba(201,80,30,0.3);
+            background: rgba(201,80,30,0.06); padding: 0.35rem 0.75rem;
+            border-radius: 4px; margin-bottom: 1.5rem;
         }
-
         .hero-tag::before {
-            content: ''; width: 6px; height: 6px;
-            border-radius: 50%; background: var(--accent);
-            animation: pulse-dot 2s ease-in-out infinite;
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent); animation: pulse-dot 2s ease-in-out infinite;
         }
-
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(0.8); }
         }
-
         .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
-            color: var(--text);
+            font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
+            margin-bottom: 1.25rem; color: var(--text);
         }
-
-        .hero h1 em {
-            font-style: normal;
-            color: var(--accent);
-            position: relative;
-        }
-
+        .hero h1 em { font-style: normal; color: var(--accent); }
         .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.75;
-            margin-bottom: 2rem;
-            max-width: 480px;
+            font-size: 1.05rem; color: var(--text-muted); line-height: 1.75;
+            margin-bottom: 2rem; max-width: 480px;
         }
-
-        .hero-btns {
-            display: flex; gap: 0.75rem; flex-wrap: wrap;
-        }
-
+        .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
         .btn {
-            font-family: var(--font-body);
-            font-weight: 500; font-size: 0.9rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.4rem;
+            font-family: var(--font-body); font-weight: 500; font-size: 0.9rem;
+            padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
+            transition: all 0.2s; cursor: pointer; border: none;
+            display: inline-flex; align-items: center; gap: 0.4rem;
         }
-
-        .btn-primary {
-            background: var(--accent); color: #fff;
-            box-shadow: 0 2px 8px rgba(201,80,30,0.3);
-        }
+        .btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s; }
+        .btn:hover svg { transform: translate(2px, -2px); }
+        .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(201,80,30,0.3); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,80,30,0.4); }
-
-        .btn-ghost {
-            background: transparent; color: var(--text);
-            border: 1px solid var(--border);
-        }
+        .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
         .btn-ghost:hover { background: var(--surface-2); border-color: var(--text-muted); }
 
-        /* Hero stats panel */
+        /* Hero stats */
         .hero-stats {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: var(--card-shadow);
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem; box-shadow: var(--card-shadow);
         }
-
         .hero-stats-title {
-            font-family: var(--font-mono);
-            font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
+            font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text-muted); margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
         }
-
         .stat-row {
             display: flex; justify-content: space-between; align-items: baseline;
-            padding: 0.7rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 0.7rem 0; border-bottom: 1px solid var(--border);
         }
         .stat-row:last-child { border-bottom: none; }
-
-        .stat-label {
-            font-size: 0.85rem; color: var(--text-muted);
-        }
-
-        .stat-value {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1.4rem;
-            color: var(--text);
-        }
-
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+        .stat-value { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--text); }
         .stat-value.accent { color: var(--accent); }
 
-        /* ─── SECTION FRAMEWORK ─── */
-        .section {
-            max-width: 1200px; margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
+        /* ─── SECTIONS ─── */
+        .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
         .section-label {
-            font-family: var(--font-mono);
-            font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+            font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 0.5rem;
         }
-
         .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.8rem, 3vw, 2.6rem);
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            color: var(--text);
-            margin-bottom: 3rem;
+            font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 700; letter-spacing: -0.025em; color: var(--text); margin-bottom: 3rem;
         }
-
-        .section-title em {
-            font-style: normal;
-            -webkit-text-stroke: 1.5px var(--text);
-            color: transparent;
-        }
-
-        hr.section-rule {
-            border: none; border-top: 1px solid var(--border);
-            margin: 0 0 3rem 0;
-        }
+        .section-title em { font-style: normal; -webkit-text-stroke: 1.5px var(--text); color: transparent; }
+        hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0 0 3rem 0; }
 
         /* ─── ABOUT ─── */
-        .about-grid {
-            display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4rem; align-items: start;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
+        .about-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4rem; align-items: start; }
+        .about-text p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
         .about-text p strong { color: var(--text); }
-
         .focus-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 10px 10px 0;
-            padding: 1.25rem 1.5rem;
-            margin-top: 1.5rem;
+            background: var(--surface); border: 1px solid var(--border);
+            border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem; margin-top: 1.5rem;
+            display: flex; align-items: flex-start; gap: 0.75rem;
         }
-
-        .focus-box p {
-            font-size: 0.9rem !important;
-            margin: 0 !important;
-        }
-
-        .numbers-panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
+        .focus-box svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+        .focus-box p { font-size: 0.9rem !important; margin: 0 !important; }
+        .numbers-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); }
         .numbers-header {
-            background: var(--accent);
-            color: #fff;
-            padding: 1rem 1.5rem;
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 0.9rem;
-            letter-spacing: 0.02em;
+            background: var(--accent); color: #fff; padding: 1rem 1.5rem;
+            font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+            letter-spacing: 0.02em; display: flex; align-items: center; gap: 0.5rem;
         }
-
-        .number-item {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; gap: 1rem;
-        }
+        .numbers-header svg { width: 15px; height: 15px; stroke: rgba(255,255,255,0.85); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .number-item { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
         .number-item:last-child { border-bottom: none; }
-
-        .number-val {
-            font-family: var(--font-display);
-            font-weight: 800; font-size: 1.6rem;
-            color: var(--accent); min-width: 3rem;
-        }
-
+        .number-val { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--accent); min-width: 3rem; }
         .number-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
 
         /* ─── SKILLS ─── */
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-        }
-
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
         .skill-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: 12px; padding: 1.5rem;
             transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            position: relative; overflow: hidden;
         }
-
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow-hover);
-            border-color: var(--accent);
+        .skill-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
         }
-
-        .skill-icon {
-            width: 40px; height: 40px;
-            background: rgba(201,80,30,0.1);
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1rem;
-        }
+        .skill-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: var(--accent); }
+        .skill-card:hover::after { transform: scaleX(1); }
+        .skill-icon { width: 40px; height: 40px; background: rgba(201,80,30,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
         .skill-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-
-        .skill-card h3 {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 0.9rem;
-            letter-spacing: -0.01em;
-            color: var(--text); margin-bottom: 0.75rem;
-        }
-
+        .skill-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: -0.01em; color: var(--text); margin-bottom: 0.75rem; }
         .skill-list { list-style: none; }
-
-        .skill-list li {
-            font-size: 0.83rem; color: var(--text-muted);
-            padding: 0.2rem 0;
-            display: flex; align-items: center; gap: 0.4rem;
-        }
-
-        .skill-list li::before {
-            content: ''; width: 4px; height: 4px;
-            border-radius: 50%; background: var(--accent); flex-shrink: 0;
-        }
+        .skill-list li { font-size: 0.83rem; color: var(--text-muted); padding: 0.2rem 0; display: flex; align-items: center; gap: 0.45rem; }
+        .skill-list li svg { width: 10px; height: 10px; stroke: var(--accent); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
         /* ─── PROJECTS ─── */
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-        }
-
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: 14px; overflow: hidden;
             transition: transform 0.25s, box-shadow 0.25s;
-            display: flex; flex-direction: column;
+            display: flex; flex-direction: column; position: relative;
         }
-
         .project-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
-
+        .project-corner {
+            position: absolute; top: 0; right: 0; width: 64px; height: 64px;
+            opacity: 0.08; pointer-events: none; z-index: 0;
+        }
         .project-top {
-            padding: 1.5rem 1.5rem 1rem;
-            border-bottom: 1px solid var(--border);
-            background: var(--surface-2);
+            padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--border);
+            background: var(--surface-2); position: relative;
         }
-
         .project-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+            font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--text-muted); margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.4rem;
         }
-
-        .project-top h3 {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1.15rem;
-            letter-spacing: -0.02em; color: var(--text);
-        }
-
-        .project-top h3 a {
-            color: inherit; text-decoration: none;
-            transition: color 0.2s;
-        }
+        .project-eyebrow svg { width: 10px; height: 10px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .project-top h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; color: var(--text); position: relative; z-index: 1; }
+        .project-top h3 a { color: inherit; text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.35rem; }
         .project-top h3 a:hover { color: var(--accent); }
-
-        .project-top h3 a::after { content: ' ↗'; font-size: 0.85em; opacity: 0.6; }
-
-        .project-body { padding: 1.25rem 1.5rem; flex: 1; }
-
-        .project-body p {
-            font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.75rem;
-        }
-
+        .project-top h3 a svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
+        .project-top h3 a:hover svg { opacity: 1; transform: translate(2px, -2px); }
+        .project-body { padding: 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+        .project-body p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
         .project-meta {
-            font-family: var(--font-mono);
-            font-size: 0.75rem; color: var(--text);
-            background: var(--surface-2);
-            padding: 0.35rem 0.6rem; border-radius: 4px;
-            display: inline-block; margin-bottom: 0.75rem;
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--text);
+            background: var(--surface-2); padding: 0.35rem 0.6rem; border-radius: 4px;
+            display: inline-flex; align-items: center; gap: 0.4rem; width: fit-content;
         }
-
-        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-
+        .project-meta svg { width: 10px; height: 10px; stroke: var(--accent); fill: none; stroke-width: 2; }
+        .project-award {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            font-size: 0.82rem; font-weight: 500; color: var(--accent-warm);
+        }
+        .project-award svg { width: 14px; height: 14px; stroke: var(--accent-warm); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.4rem; }
         .tag {
-            font-family: var(--font-mono);
-            font-size: 0.72rem; letter-spacing: 0.04em;
-            color: var(--accent-2);
-            background: rgba(26,74,107,0.08);
-            border: 1px solid rgba(26,74,107,0.15);
-            padding: 0.2rem 0.55rem; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+            color: var(--accent-2); background: rgba(26,74,107,0.08);
+            border: 1px solid rgba(26,74,107,0.15); padding: 0.2rem 0.55rem; border-radius: 4px;
         }
-
-        body.dark .tag { color: var(--accent-2); background: rgba(74,138,184,0.1); border-color: rgba(74,138,184,0.2); }
+        body.dark .tag { background: rgba(74,138,184,0.1); border-color: rgba(74,138,184,0.2); }
 
         /* ─── ACHIEVEMENTS ─── */
-        .achievements-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-        }
-
+        .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
         .ach-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: 12px; padding: 1.5rem;
             transition: transform 0.25s, box-shadow 0.25s;
             position: relative; overflow: hidden;
         }
-
         .ach-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 3px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: linear-gradient(90deg, var(--accent), var(--accent-warm));
         }
-
+        .ach-deco {
+            position: absolute; top: -16px; right: -16px;
+            width: 80px; height: 80px; opacity: 0.06; pointer-events: none;
+        }
         .ach-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
-
         .ach-badge {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase;
-            color: var(--accent);
-            background: rgba(201,80,30,0.08);
-            border: 1px solid rgba(201,80,30,0.2);
-            padding: 0.25rem 0.6rem; border-radius: 4px;
-            margin-bottom: 0.75rem;
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase;
+            color: var(--accent); background: rgba(201,80,30,0.08);
+            border: 1px solid rgba(201,80,30,0.2); padding: 0.25rem 0.6rem;
+            border-radius: 4px; margin-bottom: 0.75rem;
         }
-
-        .ach-card h3 {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1rem;
-            letter-spacing: -0.01em; margin-bottom: 0.5rem;
-        }
-
+        .ach-badge svg { width: 10px; height: 10px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .ach-badge.gold { color: var(--accent-warm); background: rgba(232,184,75,0.08); border-color: rgba(232,184,75,0.25); }
+        .ach-badge.gold svg { stroke: var(--accent-warm); }
+        .ach-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
         .ach-card h3 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
         .ach-card h3 a:hover { color: var(--accent); }
-
         .ach-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
-
-        .ach-card .ach-proof {
+        .ach-proof {
             display: inline-flex; align-items: center; gap: 0.3rem;
-            font-family: var(--font-mono);
-            font-size: 0.72rem; color: var(--accent-2);
-            text-decoration: none; margin-top: 0.5rem;
-            transition: color 0.2s;
+            font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-2);
+            text-decoration: none; margin-top: 0.5rem; transition: color 0.2s;
         }
-        .ach-card .ach-proof:hover { color: var(--accent); }
+        .ach-proof svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
+        .ach-proof:hover { color: var(--accent); }
 
         /* ─── CERTIFICATIONS ─── */
-        .certs-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
-        }
-
+        .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
         .cert-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: 12px; padding: 1.5rem;
             display: flex; align-items: center; gap: 1.25rem;
-            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; text-decoration: none;
         }
-
-        .cert-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--card-shadow-hover);
-            border-color: var(--accent);
-        }
-
+        .cert-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); border-color: var(--accent); }
         .cert-icon {
-            width: 48px; height: 48px; flex-shrink: 0;
-            border-radius: 10px;
+            width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px;
             background: linear-gradient(135deg, rgba(201,80,30,0.15), rgba(26,74,107,0.15));
-            border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
         }
         .cert-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-
         .cert-info { flex: 1; }
-
-        .cert-type {
-            font-family: var(--font-mono);
-            font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
-            color: var(--text-muted); margin-bottom: 0.25rem;
-        }
-
-        .cert-name {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 0.95rem;
-            letter-spacing: -0.01em; color: var(--text);
-        }
-
-        .cert-link {
-            font-family: var(--font-mono);
-            font-size: 0.72rem; color: var(--accent);
-            margin-top: 0.25rem;
-        }
+        .cert-type { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+        .cert-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--text); }
+        .cert-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); margin-top: 0.25rem; display: flex; align-items: center; gap: 0.3rem; }
+        .cert-link svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; }
 
         /* ─── PUBLICATIONS ─── */
-        .pubs-list {
-            border: 1px solid var(--border);
-            border-radius: 12px; overflow: hidden;
-            background: var(--surface);
-        }
-
+        .pubs-list { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
         .pub-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s;
-            position: relative;
+            padding: 1.5rem 1.5rem 1.5rem 4rem; border-bottom: 1px solid var(--border);
+            transition: background 0.2s; position: relative;
         }
         .pub-item:last-child { border-bottom: none; }
         .pub-item:hover { background: var(--surface-2); }
-
-        .pub-item h3 {
-            font-family: var(--font-display);
-            font-weight: 600; font-size: 0.95rem;
-            letter-spacing: -0.01em; margin-bottom: 0.35rem;
-        }
-
-        .pub-item h3 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+        .pub-item h3 { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; margin-bottom: 0.35rem; }
+        .pub-item h3 a { color: var(--text); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
         .pub-item h3 a:hover { color: var(--accent); }
-        .pub-item h3 a::after { content: ' ↗'; opacity: 0.5; font-size: 0.8em; }
-
-        .pub-meta {
-            font-family: var(--font-mono);
-            font-size: 0.73rem; color: var(--text-muted);
-            margin-bottom: 0.4rem;
-        }
-
+        .pub-item h3 a svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; opacity: 0.5; }
+        .pub-meta { font-family: var(--font-mono); font-size: 0.73rem; color: var(--text-muted); margin-bottom: 0.4rem; }
         .pub-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
-
-        .pub-index {
-            position: absolute; top: 1.5rem; right: 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.7rem; color: var(--border);
-        }
-
-        /* Patents subsection */
+        .pub-index { position: absolute; top: 1.5rem; left: 1.4rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--border); font-weight: 500; }
         .subsection-label {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1.1rem;
-            color: var(--text);
-            margin: 3rem 0 1rem 0;
+            font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+            color: var(--text); margin: 3rem 0 1rem 0;
             display: flex; align-items: center; gap: 0.75rem;
         }
-        .subsection-label::after {
-            content: ''; flex: 1; height: 1px; background: var(--border);
-        }
+        .subsection-label svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+        .subsection-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
         /* ─── EXPERIENCE ─── */
-        .exp-list { display: flex; flex-direction: column; gap: 1px; }
-
+        .exp-list { display: flex; flex-direction: column; gap: 1rem; }
         .exp-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: 12px; padding: 1.75rem;
-            transition: box-shadow 0.25s;
+            transition: box-shadow 0.25s; position: relative; overflow: hidden;
+        }
+        .exp-item::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-warm));
         }
         .exp-item:hover { box-shadow: var(--card-shadow-hover); }
-
         .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; gap: 1rem; }
-
-        .exp-role {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1.05rem;
-            color: var(--text);
-        }
-
-        .exp-company { font-size: 0.88rem; color: var(--accent); margin-top: 0.15rem; }
-
+        .exp-role { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text); }
+        .exp-company { font-size: 0.88rem; color: var(--accent); margin-top: 0.15rem; display: flex; align-items: center; gap: 0.35rem; }
+        .exp-company svg { width: 12px; height: 12px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .exp-date {
-            font-family: var(--font-mono);
-            font-size: 0.72rem; letter-spacing: 0.04em;
-            color: var(--text-muted);
-            white-space: nowrap;
-            background: var(--surface-2);
-            padding: 0.3rem 0.6rem; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+            color: var(--text-muted); white-space: nowrap;
+            background: var(--surface-2); padding: 0.3rem 0.6rem; border-radius: 4px;
             border: 1px solid var(--border);
         }
-
         .exp-points { list-style: none; }
-
         .exp-points li {
             font-size: 0.88rem; color: var(--text-muted);
-            padding: 0.25rem 0;
-            padding-left: 1.25rem; position: relative;
+            padding: 0.25rem 0 0.25rem 1.25rem; position: relative; line-height: 1.55;
         }
-
         .exp-points li::before {
-            content: '→'; position: absolute; left: 0;
-            color: var(--accent); font-size: 0.8rem;
+            content: ''; position: absolute; left: 0; top: 0.6rem;
+            width: 5px; height: 5px; border-radius: 50%; border: 1.5px solid var(--accent);
         }
 
         /* ─── CONTACT ─── */
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-        }
-
-        .contact-panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px; padding: 2rem;
-        }
-
-        .contact-panel h3 {
-            font-family: var(--font-display);
-            font-weight: 700; font-size: 1.1rem;
-            margin-bottom: 1.5rem; color: var(--text);
-        }
-
-        .contact-item {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--border);
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .contact-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+        .contact-panel h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text); }
+        .contact-item { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); }
         .contact-item:last-of-type { border-bottom: none; }
-
         .contact-dot {
-            width: 38px; height: 38px; flex-shrink: 0;
-            border-radius: 8px;
-            background: var(--surface-2);
-            border: 1px solid var(--border);
+            width: 38px; height: 38px; flex-shrink: 0; border-radius: 8px;
+            background: var(--surface-2); border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
         }
         .contact-dot svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-
         .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
         .contact-val { font-size: 0.9rem; color: var(--text); }
         .contact-val a { color: var(--text); text-decoration: none; transition: color 0.2s; }
         .contact-val a:hover { color: var(--accent); }
-
         .connect-panel {
             background: linear-gradient(135deg, var(--accent) 0%, #a83e14 100%);
             border-radius: 14px; padding: 2.5rem;
             display: flex; flex-direction: column; justify-content: space-between;
-            min-height: 280px;
+            min-height: 280px; position: relative; overflow: hidden;
         }
-
-        .connect-panel h3 {
-            font-family: var(--font-display);
-            font-weight: 800; font-size: 1.6rem;
-            color: #fff; line-height: 1.2;
-        }
-
-        .connect-panel p {
-            color: rgba(255,255,255,0.75);
-            font-size: 0.9rem; line-height: 1.65;
-            margin: 1rem 0 1.5rem;
-        }
-
+        .connect-panel-deco { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+        .connect-panel > *:not(.connect-panel-deco) { position: relative; z-index: 1; }
+        .connect-panel h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: #fff; line-height: 1.2; }
+        .connect-panel p { color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.65; margin: 1rem 0 1.5rem; }
         .btn-white {
             display: inline-flex; align-items: center; gap: 0.5rem;
             background: #fff; color: var(--accent);
-            font-family: var(--font-body); font-weight: 600;
-            font-size: 0.9rem; padding: 0.75rem 1.5rem;
-            border-radius: 8px; text-decoration: none;
-            transition: all 0.2s;
+            font-family: var(--font-body); font-weight: 600; font-size: 0.9rem;
+            padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
+            transition: all 0.2s; width: fit-content;
         }
+        .btn-white svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform 0.2s; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .btn-white:hover svg { transform: translate(2px, -2px); }
 
         /* ─── FOOTER ─── */
-        footer {
-            border-top: 1px solid var(--border);
-            background: var(--surface);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.82rem; color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
-
+        footer { border-top: 1px solid var(--border); background: var(--surface); padding: 2rem; text-align: center; }
+        footer p { font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); }
         footer strong { color: var(--text); font-weight: 500; }
 
         /* ─── ANIMATIONS ─── */
-        .fade-up {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* ─── MOBILE ─── */
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 900px) {
             .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .hero-stats { display: none; }
@@ -770,7 +458,6 @@
             .contact-grid { grid-template-columns: 1fr; }
             .nav-links li:not(.theme-wrap) { display: none; }
         }
-
         @media (max-width: 600px) {
             .hero h1 { font-size: 2.4rem; }
             .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -795,7 +482,7 @@
             <li><a href="#contact">Contact</a></li>
             <li class="theme-wrap">
                 <button class="theme-btn" id="themeBtn" title="Toggle theme">
-                    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
             </li>
         </ul>
@@ -809,39 +496,27 @@
     <div class="hero-inner">
         <div class="hero-text">
             <div class="hero-tag">Available for opportunities</div>
-            <h1>Cybersecurity<br>Researcher &<br><em>Patent Holder</em></h1>
+            <h1>Cybersecurity<br>Researcher &amp;<br><em>Patent Holder</em></h1>
             <p class="hero-sub">BTech Cyber Security student building AI-powered security systems — from deepfake detection platforms to enterprise Linux administration. Recognized globally at Intel AI Challenge 2025.</p>
             <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View Projects →</a>
-                <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                    <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+                <a href="#contact" class="btn btn-ghost">
+                    Get In Touch
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
             </div>
         </div>
         <div class="hero-stats fade-up">
             <div class="hero-stats-title">// at a glance</div>
-            <div class="stat-row">
-                <span class="stat-label">Research Papers</span>
-                <span class="stat-value accent">9</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Patents (Published + Approved)</span>
-                <span class="stat-value accent">3</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">AI Model Accuracy</span>
-                <span class="stat-value">97.28%</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Active Platform Users</span>
-                <span class="stat-value">500+</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Workshop Participants</span>
-                <span class="stat-value">200+</span>
-            </div>
-            <div class="stat-row">
-                <span class="stat-label">Institution</span>
-                <span style="font-size:0.8rem; color:var(--text-muted); text-align:right; max-width:180px; line-height:1.3">SAKEC, Mumbai</span>
-            </div>
+            <div class="stat-row"><span class="stat-label">Research Papers</span><span class="stat-value accent">9</span></div>
+            <div class="stat-row"><span class="stat-label">Patents (Published + Approved)</span><span class="stat-value accent">3</span></div>
+            <div class="stat-row"><span class="stat-label">AI Model Accuracy</span><span class="stat-value">97.28%</span></div>
+            <div class="stat-row"><span class="stat-label">Active Platform Users</span><span class="stat-value">500+</span></div>
+            <div class="stat-row"><span class="stat-label">Workshop Participants</span><span class="stat-value">200+</span></div>
+            <div class="stat-row"><span class="stat-label">Institution</span><span style="font-size:0.8rem;color:var(--text-muted);text-align:right;max-width:180px;line-height:1.3">SAKEC, Mumbai</span></div>
         </div>
     </div>
 </section>
@@ -857,31 +532,20 @@
             <p>As a project leader, I've successfully managed cross-functional teams to deliver award-winning solutions including <strong>TrustTrace</strong> (deepfake detection platform), <strong>LinuxAdmin</strong> (air-gapped security management system), and <strong>VerifyIT</strong> (misinformation detection platform).</p>
             <p>My work has been recognized globally — winning the <strong>Intel AI Challenge 2025</strong> — and I've published 9 research papers in Scopus-indexed journals while securing 3 patents in cybersecurity and AI domains.</p>
             <div class="focus-box">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 <p><strong>Current Focus:</strong> Leveraging technical expertise to drive complex technology initiatives in project management roles, while continuing research in AI safety, deepfake mitigation, and GRC strategy.</p>
             </div>
         </div>
         <div class="numbers-panel">
-            <div class="numbers-header">Key Numbers</div>
-            <div class="number-item">
-                <div class="number-val">9</div>
-                <div class="number-desc">Published research papers in Scopus-indexed journals</div>
+            <div class="numbers-header">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Key Numbers
             </div>
-            <div class="number-item">
-                <div class="number-val">3</div>
-                <div class="number-desc">Patents — 1 published, 2 approved</div>
-            </div>
-            <div class="number-item">
-                <div class="number-val">97%</div>
-                <div class="number-desc">Peak accuracy across AI models</div>
-            </div>
-            <div class="number-item">
-                <div class="number-val">500+</div>
-                <div class="number-desc">Active users across platforms</div>
-            </div>
-            <div class="number-item">
-                <div class="number-val">200+</div>
-                <div class="number-desc">Workshop & training participants</div>
-            </div>
+            <div class="number-item"><div class="number-val">9</div><div class="number-desc">Published research papers in Scopus-indexed journals</div></div>
+            <div class="number-item"><div class="number-val">3</div><div class="number-desc">Patents — 1 published, 2 approved</div></div>
+            <div class="number-item"><div class="number-val">97%</div><div class="number-desc">Peak accuracy across AI models</div></div>
+            <div class="number-item"><div class="number-val">500+</div><div class="number-desc">Active users across platforms</div></div>
+            <div class="number-item"><div class="number-val">200+</div><div class="number-desc">Workshop &amp; training participants</div></div>
         </div>
     </div>
 </div>
@@ -896,41 +560,41 @@
             <div class="skill-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <h3>Programming</h3>
             <ul class="skill-list">
-                <li>Python</li>
-                <li>C</li>
-                <li>HTML / CSS / JavaScript</li>
-                <li>Bash / Shell</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Python</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>C</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>HTML / CSS / JavaScript</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bash / Shell</li>
             </ul>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <h3>Security Tools</h3>
             <ul class="skill-list">
-                <li>Kali Linux</li>
-                <li>BurpSuite</li>
-                <li>Wireshark</li>
-                <li>Metasploit</li>
-                <li>Wazuh SIEM</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kali Linux</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>BurpSuite</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wireshark</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Metasploit</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wazuh SIEM</li>
             </ul>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
             <h3>AI / ML</h3>
             <ul class="skill-list">
-                <li>TensorFlow</li>
-                <li>CNN / BERT</li>
-                <li>Django & Flask</li>
-                <li>Pandas & NumPy</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>TensorFlow</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>CNN / BERT</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Django &amp; Flask</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pandas &amp; NumPy</li>
             </ul>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
             <h3>Cybersecurity</h3>
             <ul class="skill-list">
-                <li>Penetration Testing</li>
-                <li>Vulnerability Assessment</li>
-                <li>GRC & IDR</li>
-                <li>Security Auditing</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Penetration Testing</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Vulnerability Assessment</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>GRC &amp; IDR</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Security Auditing</li>
             </ul>
         </div>
     </div>
@@ -942,91 +606,114 @@
     <div class="section-title">Featured <em>Projects</em></div>
     <hr class="section-rule">
     <div class="projects-grid fade-up">
+
         <div class="project-card">
+            <svg class="project-corner" viewBox="0 0 64 64" fill="none"><circle cx="64" cy="0" r="48" stroke="var(--accent)" stroke-width="1.5"/><circle cx="64" cy="0" r="30" stroke="var(--accent)" stroke-width="1.5"/></svg>
             <div class="project-top">
-                <div class="project-eyebrow">Deepfake Detection · Global Award Winner</div>
-                <h3><a href="https://trusttrace.net.in/" target="_blank">TrustTrace</a></h3>
+                <div class="project-eyebrow">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Deepfake Detection · Global Award Winner
+                </div>
+                <h3><a href="https://trusttrace.net.in/" target="_blank">TrustTrace <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3>
             </div>
             <div class="project-body">
                 <p>Award-winning multimedia deepfake detection platform supporting image, video, and audio with ensemble ML models.</p>
-                <span class="project-meta">92% accuracy · 500+ active users</span>
-                <p>🏆 Global Winner — Intel AI Challenge 2025</p>
-                <div class="tag-row">
-                    <span class="tag">Python</span><span class="tag">Django</span><span class="tag">ML</span><span class="tag">Bootstrap 5</span>
-                </div>
+                <div class="project-meta"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>92% accuracy · 500+ active users</div>
+                <div class="project-award"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Global Winner — Intel AI Challenge 2025</div>
+                <div class="tag-row"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">ML</span><span class="tag">Bootstrap 5</span></div>
             </div>
         </div>
+
         <div class="project-card">
+            <svg class="project-corner" viewBox="0 0 64 64" fill="none"><rect x="20" y="-10" width="54" height="54" stroke="var(--accent)" stroke-width="1.5" transform="rotate(15 20 -10)"/></svg>
             <div class="project-top">
-                <div class="project-eyebrow">Enterprise Security · Air-Gapped System</div>
+                <div class="project-eyebrow">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    Enterprise Security · Air-Gapped System
+                </div>
                 <h3>LinuxAdmin</h3>
             </div>
             <div class="project-body">
                 <p>Enterprise security system with master-slave architecture, centralized monitoring, and automated threat detection.</p>
-                <span class="project-meta">Port scanning · Privilege escalation alerts</span>
+                <div class="project-meta"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Port scanning · Privilege escalation alerts</div>
                 <p>SIEM integration via Wazuh, real-time alerting pipeline.</p>
-                <div class="tag-row">
-                    <span class="tag">Bash</span><span class="tag">Wazuh</span><span class="tag">SIEM</span><span class="tag">NumPy</span>
-                </div>
+                <div class="tag-row"><span class="tag">Bash</span><span class="tag">Wazuh</span><span class="tag">SIEM</span><span class="tag">NumPy</span></div>
             </div>
         </div>
+
         <div class="project-card">
+            <svg class="project-corner" viewBox="0 0 64 64" fill="none"><polygon points="64,0 64,56 8,56" stroke="var(--accent)" stroke-width="1.5"/></svg>
             <div class="project-top">
-                <div class="project-eyebrow">Fact-Checking · Misinformation Detection</div>
+                <div class="project-eyebrow">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                    Fact-Checking · Misinformation Detection
+                </div>
                 <h3>VerifyIT</h3>
             </div>
             <div class="project-body">
                 <p>Multi-modal fact-checking platform using BERT transformers for text analysis, image reverse search, and URL verification.</p>
-                <span class="project-meta">88% classification accuracy</span>
-                <p>Winner — CyberChallenge 2025 (Delhi Police).</p>
-                <div class="tag-row">
-                    <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">BERT</span><span class="tag">Ollama</span>
-                </div>
+                <div class="project-meta"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>88% classification accuracy</div>
+                <div class="project-award"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Winner — CyberChallenge 2025 (Delhi Police)</div>
+                <div class="tag-row"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">BERT</span><span class="tag">Ollama</span></div>
             </div>
         </div>
+
     </div>
 </div>
 
 <!-- ACHIEVEMENTS -->
 <div class="section" id="achievements" style="padding-top:0">
     <div class="section-label">// 004</div>
-    <div class="section-title">Awards & <em>Recognition</em></div>
+    <div class="section-title">Awards &amp; <em>Recognition</em></div>
     <hr class="section-rule">
     <div class="achievements-grid fade-up">
+
         <div class="ach-card">
-            <div class="ach-badge">Global Competition</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="var(--accent)" stroke-width="7"/></svg>
+            <div class="ach-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Global Competition</div>
             <h3><a href="https://drive.google.com/file/d/1kqX25ViinUQMjZVYrkDuyfuEU366hkwy/view?usp=drive_link" target="_blank">Intel AI Challenge 2025</a></h3>
             <p><strong>Winner — Global Level.</strong> Project: Deepfake Detective — Securing Social Integrity, Uncovering Faux AI Content.</p>
         </div>
+
         <div class="ach-card">
-            <div class="ach-badge">National Competition</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,68 4,68" stroke="var(--accent)" stroke-width="7"/></svg>
+            <div class="ach-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>National Competition</div>
             <h3><a href="https://drive.google.com/file/d/1jN7jCzbvWAyAeESicgFTozyVTwsdOMAY/view?usp=drive_link" target="_blank">CyberChallenge 2025</a></h3>
             <p><strong>Winner</strong> — Delhi Police. Theme: Counteracting Misinformation and Fake News.</p>
-            <a href="https://drive.google.com/file/d/1eqEnTqD6DdJqKZjmqMFBF08Tm0XUn6qF/view?usp=drive_link" target="_blank" class="ach-proof">View Certificate ↗</a>
+            <a href="https://drive.google.com/file/d/1eqEnTqD6DdJqKZjmqMFBF08Tm0XUn6qF/view?usp=drive_link" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Certificate</a>
         </div>
+
         <div class="ach-card">
-            <div class="ach-badge">Runner Up</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><rect x="8" y="8" width="64" height="64" stroke="var(--accent)" stroke-width="7"/></svg>
+            <div class="ach-badge"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>Runner Up</div>
             <h3><a href="https://drive.google.com/file/d/1YlqgHX8p5vox-Xl0N1BwNFA8Fq-bPghP/view?usp=drive_link" target="_blank">Tantravihar 2025</a></h3>
             <p><strong>Runner Up</strong> — Vidyalankar Institute of Technology. Project: TrustTrace — Multimedia Deepfake Detection.</p>
-            <a href="https://drive.google.com/file/d/1HXpofNPHnRVBmbUrM7XnAzwng3xkBTuM/view?usp=drive_link" target="_blank" class="ach-proof">View Award ↗</a>
+            <a href="https://drive.google.com/file/d/1HXpofNPHnRVBmbUrM7XnAzwng3xkBTuM/view?usp=drive_link" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Award</a>
         </div>
+
         <div class="ach-card">
-            <div class="ach-badge">Runner Up</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,28 62,68 18,68 4,28" stroke="var(--accent)" stroke-width="7"/></svg>
+            <div class="ach-badge"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>Runner Up</div>
             <h3>U'lectro 26</h3>
             <p><strong>Runner Up</strong> — Mukesh Patel School of Technology Management and Engineering. Theme: Software for Social Cause.</p>
-            <a href="https://drive.google.com/file/d/1BErpudmzZdt7ux7WNn8D3XuOzo_78GTS/view?usp=sharing" target="_blank" class="ach-proof">View Award ↗</a>
+            <a href="https://drive.google.com/file/d/1BErpudmzZdt7ux7WNn8D3XuOzo_78GTS/view?usp=sharing" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Award</a>
         </div>
+
         <div class="ach-card">
-            <div class="ach-badge">Quality Excellence</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="var(--accent-warm)" stroke-width="5"/><circle cx="40" cy="40" r="14" stroke="var(--accent-warm)" stroke-width="3"/></svg>
+            <div class="ach-badge gold"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Quality Excellence</div>
             <h3>CCQC Gold Trophy</h3>
-            <p><strong>Gold Trophy</strong> — Quality Circle Forum of India. Projects: <a href="https://drive.google.com/file/d/1M3s2eQlqkODIlB9IF6q-h2F90rGllbxo/view?usp=drive_link" target="_blank" style="color:var(--accent)">TrustTrace</a> & <a href="https://drive.google.com/file/d/1UT_ZmEwoiE7QvMw1Ujb9aXgBKAbsbf__/view?usp=drive_link" target="_blank" style="color:var(--accent)">LinuxAdmin</a>.</p>
+            <p><strong>Gold Trophy</strong> — Quality Circle Forum of India. Projects: <a href="https://drive.google.com/file/d/1M3s2eQlqkODIlB9IF6q-h2F90rGllbxo/view?usp=drive_link" target="_blank" style="color:var(--accent)">TrustTrace</a> &amp; <a href="https://drive.google.com/file/d/1UT_ZmEwoiE7QvMw1Ujb9aXgBKAbsbf__/view?usp=drive_link" target="_blank" style="color:var(--accent)">LinuxAdmin</a>.</p>
         </div>
+
         <div class="ach-card">
-            <div class="ach-badge">CTF Competitions</div>
+            <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><line x1="8" y1="8" x2="72" y2="72" stroke="var(--accent)" stroke-width="6"/><line x1="72" y1="8" x2="8" y2="72" stroke="var(--accent)" stroke-width="6"/><circle cx="40" cy="40" r="18" stroke="var(--accent)" stroke-width="4"/></svg>
+            <div class="ach-badge"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>CTF Competitions</div>
             <h3>Capture The Flag</h3>
             <p>AIR 30 — Pentathon 2025</p>
             <p>AIR 36 — DawgCTF 2025</p>
         </div>
+
     </div>
 </div>
 
@@ -1041,7 +728,7 @@
             <div class="cert-info">
                 <div class="cert-type">CompTIA</div>
                 <div class="cert-name">Security+</div>
-                <div class="cert-link">View Certificate ↗</div>
+                <div class="cert-link"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Certificate</div>
             </div>
         </a>
         <a href="https://drive.google.com/file/d/1LAQ6TPze14iusk7w3fZQtfq9Jv8vdxVG/view?usp=sharing" target="_blank" class="cert-card">
@@ -1049,7 +736,7 @@
             <div class="cert-info">
                 <div class="cert-type">The SecOps Group</div>
                 <div class="cert-name">Certified Network Security Practitioner (CNSP)</div>
-                <div class="cert-link">View Certificate ↗</div>
+                <div class="cert-link"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Certificate</div>
             </div>
         </a>
     </div>
@@ -1061,78 +748,29 @@
     <div class="section-title">Research &amp; <em>Patents</em></div>
     <hr class="section-rule">
 
-    <div class="subsection-label">Published Research — 9 Papers</div>
+    <div class="subsection-label">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Published Research — 9 Papers
+    </div>
     <div class="pubs-list fade-up">
-        <div class="pub-item">
-            <div class="pub-index">01</div>
-            <h3><a href="https://drive.google.com/file/d/1fOIWOq6Dw8Q02NTbXPVmLWYQZ9gSY5mf/view?usp=sharing" target="_blank">ResNet50 DeepFake Detector: Unmasking Reality</a></h3>
-            <div class="pub-meta">Indian Journal of Science and Technology, 2024 — Scopus-Indexed</div>
-            <div class="pub-desc">Achieved 97% accuracy in deepfake detection using ResNet50 with image scraping feature.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">02</div>
-            <h3><a href="https://drive.google.com/file/d/12G34_BuDykeWevbD3pq5fglcvZiwF1b-/view?usp=drive_link" target="_blank">Deepfake Detection Using EfficientNetB7: Efficacy, Efficiency, and Adaptability</a></h3>
-            <div class="pub-meta">International Journal of Intelligent Systems and Applications in Engineering, 2024</div>
-            <div class="pub-desc">Comprehensive analysis of EfficientNetB7 achieving 85% accuracy in deepfake detection.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">03</div>
-            <h3><a href="https://drive.google.com/file/d/1HM0ARx2KSUekPAn6bTidpb0xyT2rlaYV/view?usp=drive_link" target="_blank">Securing Visual Integrity: EfficientNetB4-Based Solution with Attention Layers</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Achieved 94% accuracy on FaceForensics and DFDC datasets using attention mechanisms and Siamese training.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">04</div>
-            <h3><a href="https://drive.google.com/file/d/1OinQU7kVaJSHVDtPwBvGlhgEaHih9Ngz/view?usp=drive_link" target="_blank">Advancements in Video Deepfake Detection: Integration of ResNet50, EfficientNetB7, and EfficientNetAutoAttB4</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Ensemble model approach for comprehensive deepfake detection across multiple architectures.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">05</div>
-            <h3><a href="https://drive.google.com/file/d/1i4ok-zjJGvpyApluESptTTB-42dezABt/view?usp=drive_link" target="_blank">Improving Deepfake Audio Detection: A Support Vector Machine Approach with MFCCs</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Achieved 97.28% accuracy in audio deepfake detection using SVM and Mel-Frequency Cepstral Coefficients.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">06</div>
-            <h3><a href="https://drive.google.com/file/d/19Zsyw546FrlEXPwDI85CFjYQgSdLz-6q/view?usp=drive_link" target="_blank">Harmonizing Algorithms: Enhancing Audio Deepfake Detection</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Multi-faceted approach integrating MFCC-based SVM and Neural Networks for audio verification.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">07</div>
-            <h3><a href="https://drive.google.com/file/d/1Oa6i_yD1724SBykKb5DOnB3P16wAQ75v/view?usp=drive_link" target="_blank">Enhancing Audio Deepfake Detection using Support Vector Machines and Mel-Frequency Cepstral Coefficients</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Comprehensive analysis using autoencoders, GANs, and CNNs for robust audio verification.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">08</div>
-            <h3><a href="https://drive.google.com/file/d/1UilUj-9DPIg8Um_G-IgnO2ZkwqAXAtZ_/view?usp=drive_link" target="_blank">Deepfake Technology and Image Forensics: Advancements, Challenges, and Ethical Implications</a></h3>
-            <div class="pub-meta">IJISAE, 2024</div>
-            <div class="pub-desc">Comprehensive analysis of deepfake detection methodologies using autoencoders, GANs, and CNNs.</div>
-        </div>
+        <div class="pub-item"><div class="pub-index">01</div><h3><a href="https://drive.google.com/file/d/1fOIWOq6Dw8Q02NTbXPVmLWYQZ9gSY5mf/view?usp=sharing" target="_blank">ResNet50 DeepFake Detector: Unmasking Reality <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Indian Journal of Science and Technology, 2024 — Scopus-Indexed</div><div class="pub-desc">Achieved 97% accuracy in deepfake detection using ResNet50 with image scraping feature.</div></div>
+        <div class="pub-item"><div class="pub-index">02</div><h3><a href="https://drive.google.com/file/d/12G34_BuDykeWevbD3pq5fglcvZiwF1b-/view?usp=drive_link" target="_blank">Deepfake Detection Using EfficientNetB7: Efficacy, Efficiency, and Adaptability <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">International Journal of Intelligent Systems and Applications in Engineering, 2024</div><div class="pub-desc">Comprehensive analysis of EfficientNetB7 achieving 85% accuracy in deepfake detection.</div></div>
+        <div class="pub-item"><div class="pub-index">03</div><h3><a href="https://drive.google.com/file/d/1HM0ARx2KSUekPAn6bTidpb0xyT2rlaYV/view?usp=drive_link" target="_blank">Securing Visual Integrity: EfficientNetB4-Based Solution with Attention Layers <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 94% accuracy on FaceForensics and DFDC datasets using attention mechanisms and Siamese training.</div></div>
+        <div class="pub-item"><div class="pub-index">04</div><h3><a href="https://drive.google.com/file/d/1OinQU7kVaJSHVDtPwBvGlhgEaHih9Ngz/view?usp=drive_link" target="_blank">Advancements in Video Deepfake Detection: Integration of ResNet50, EfficientNetB7, and EfficientNetAutoAttB4 <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Ensemble model approach for comprehensive deepfake detection across multiple architectures.</div></div>
+        <div class="pub-item"><div class="pub-index">05</div><h3><a href="https://drive.google.com/file/d/1i4ok-zjJGvpyApluESptTTB-42dezABt/view?usp=drive_link" target="_blank">Improving Deepfake Audio Detection: A Support Vector Machine Approach with MFCCs <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 97.28% accuracy in audio deepfake detection using SVM and Mel-Frequency Cepstral Coefficients.</div></div>
+        <div class="pub-item"><div class="pub-index">06</div><h3><a href="https://drive.google.com/file/d/19Zsyw546FrlEXPwDI85CFjYQgSdLz-6q/view?usp=drive_link" target="_blank">Harmonizing Algorithms: Enhancing Audio Deepfake Detection <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Multi-faceted approach integrating MFCC-based SVM and Neural Networks for audio verification.</div></div>
+        <div class="pub-item"><div class="pub-index">07</div><h3><a href="https://drive.google.com/file/d/1Oa6i_yD1724SBykKb5DOnB3P16wAQ75v/view?usp=drive_link" target="_blank">Enhancing Audio Deepfake Detection using Support Vector Machines and Mel-Frequency Cepstral Coefficients <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis using autoencoders, GANs, and CNNs for robust audio verification.</div></div>
+        <div class="pub-item"><div class="pub-index">08</div><h3><a href="https://drive.google.com/file/d/1UilUj-9DPIg8Um_G-IgnO2ZkwqAXAtZ_/view?usp=drive_link" target="_blank">Deepfake Technology and Image Forensics: Advancements, Challenges, and Ethical Implications <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis of deepfake detection methodologies using autoencoders, GANs, and CNNs.</div></div>
     </div>
 
-    <div class="subsection-label">Patents</div>
+    <div class="subsection-label">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        Patents
+    </div>
     <div class="pubs-list fade-up">
-        <div class="pub-item">
-            <div class="pub-index">P1</div>
-            <h3><a href="https://drive.google.com/file/d/1h3OE0UCZ6ks1pSZIat1Qk6ot4FWAifWg/view?usp=drive_link" target="_blank">Deep-Fake Detection System and Method</a></h3>
-            <div class="pub-meta">Patent No. 557207 — Government of India Patent Office · Published December 2024 · Filed April 10, 2024</div>
-            <div class="pub-desc">System and method for detecting potential misinformation spread through AI-manipulated multimedia content.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">P2</div>
-            <h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Multi-Modal Deepfake Detection</a></h3>
-            <div class="pub-meta">Status: Approved — 2024</div>
-            <div class="pub-desc">Advanced detection system for multimedia deepfake identification across image, video, and audio modalities.</div>
-        </div>
-        <div class="pub-item">
-            <div class="pub-index">P3</div>
-            <h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Network Security Management System</a></h3>
-            <div class="pub-meta">Status: Approved — 2024</div>
-            <div class="pub-desc">Centralized security and management system for network-connected devices in enterprise environments.</div>
-        </div>
+        <div class="pub-item"><div class="pub-index">P1</div><h3><a href="https://drive.google.com/file/d/1h3OE0UCZ6ks1pSZIat1Qk6ot4FWAifWg/view?usp=drive_link" target="_blank">Deep-Fake Detection System and Method <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Patent No. 557207 — Government of India Patent Office · Published December 2024 · Filed April 10, 2024</div><div class="pub-desc">System and method for detecting potential misinformation spread through AI-manipulated multimedia content.</div></div>
+        <div class="pub-item"><div class="pub-index">P2</div><h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Multi-Modal Deepfake Detection <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Status: Approved — 2024</div><div class="pub-desc">Advanced detection system for multimedia deepfake identification across image, video, and audio modalities.</div></div>
+        <div class="pub-item"><div class="pub-index">P3</div><h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Network Security Management System <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Status: Approved — 2024</div><div class="pub-desc">Centralized security and management system for network-connected devices in enterprise environments.</div></div>
     </div>
 </div>
 
@@ -1141,12 +779,12 @@
     <div class="section-label">// 007</div>
     <div class="section-title">Work <em>Experience</em></div>
     <hr class="section-rule">
-    <div class="exp-list fade-up" style="display:flex; flex-direction:column; gap:1rem;">
+    <div class="exp-list fade-up">
         <div class="exp-item">
             <div class="exp-header">
                 <div>
                     <div class="exp-role">Infrastructure Security Intern</div>
-                    <div class="exp-company">Bimabajar</div>
+                    <div class="exp-company"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Bimabajar</div>
                 </div>
                 <div class="exp-date">Jan 2026 — Present</div>
             </div>
@@ -1160,7 +798,7 @@
             <div class="exp-header">
                 <div>
                     <div class="exp-role">Cybersecurity Intern</div>
-                    <div class="exp-company">CyberPeace Centre of Excellence (COE)</div>
+                    <div class="exp-company"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>CyberPeace Centre of Excellence (COE)</div>
                 </div>
                 <div class="exp-date">Oct 2023 — Dec 2025</div>
             </div>
@@ -1174,7 +812,7 @@
             <div class="exp-header">
                 <div>
                     <div class="exp-role">Freelance Web Developer</div>
-                    <div class="exp-company">Self-Employed</div>
+                    <div class="exp-company"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Self-Employed</div>
                 </div>
                 <div class="exp-date">Jun 2025 — Dec 2025</div>
             </div>
@@ -1197,37 +835,41 @@
             <h3>Contact Information</h3>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                <div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-val">prathamshah123247@gmail.com</div>
-                </div>
+                <div><div class="contact-label">Email</div><div class="contact-val">prathamshah123247@gmail.com</div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 5.5 5.5l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                <div>
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-val">+91 9699143903</div>
-                </div>
+                <div><div class="contact-label">Phone</div><div class="contact-val">+91 9699143903</div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-                <div>
-                    <div class="contact-label">LinkedIn</div>
-                    <div class="contact-val"><a href="https://www.linkedin.com/in/prathamshah2407/" target="_blank">prathamshah2407</a></div>
-                </div>
+                <div><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://www.linkedin.com/in/prathamshah2407/" target="_blank">prathamshah2407</a></div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-                <div>
-                    <div class="contact-label">GitHub</div>
-                    <div class="contact-val"><a href="https://github.com/prathamshah123247" target="_blank">prathamshah123247</a></div>
-                </div>
+                <div><div class="contact-label">GitHub</div><div class="contact-val"><a href="https://github.com/prathamshah123247" target="_blank">prathamshah123247</a></div></div>
             </div>
         </div>
         <div class="connect-panel">
+            <div class="connect-panel-deco">
+                <svg viewBox="0 0 480 280" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="rgba(255,255,255,0.07)" stroke-width="1" fill="none">
+                        <circle cx="400" cy="20" r="80"/><circle cx="400" cy="20" r="130"/><circle cx="400" cy="20" r="185"/>
+                        <line x1="0" y1="140" x2="480" y2="140"/><line x1="240" y1="0" x2="240" y2="280"/>
+                    </g>
+                    <g stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none">
+                        <path d="M40 220 L40 140 L110 140"/>
+                        <circle cx="40" cy="140" r="4" fill="rgba(255,255,255,0.3)"/>
+                        <circle cx="110" cy="140" r="3" fill="rgba(255,255,255,0.3)"/>
+                    </g>
+                </svg>
+            </div>
             <h3>Let's build something secure.</h3>
             <p>I'm always interested in discussing new projects, creative ideas, or opportunities. Whether you need a project manager with technical depth or cybersecurity consultation — reach out.</p>
-            <a href="mailto:prathamshah123247@gmail.com" class="btn-white">Send an Email →</a>
+            <a href="mailto:prathamshah123247@gmail.com" class="btn-white">
+                Send an Email
+                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
         </div>
     </div>
 </div>
@@ -1239,37 +881,32 @@
 </footer>
 
 <script>
-    // Theme toggle
     const btn = document.getElementById('themeBtn');
+    const icon = document.getElementById('themeIcon');
     const body = document.body;
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    const sunSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-    const moonSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    const sunSVG = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+    const moonSVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
 
-    if (saved === 'dark' || (!saved && prefersDark)) {
-        body.classList.add('dark');
-        btn.innerHTML = moonSVG;
+    function setTheme(dark) {
+        body.classList.toggle('dark', dark);
+        icon.innerHTML = dark ? moonSVG : sunSVG;
     }
 
+    setTheme(saved === 'dark' || (!saved && prefersDark));
     btn.addEventListener('click', () => {
-        body.classList.toggle('dark');
-        const isDark = body.classList.contains('dark');
-        btn.innerHTML = isDark ? moonSVG : sunSVG;
+        const isDark = !body.classList.contains('dark');
+        setTheme(isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
-    // Scroll fade-in
     const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('visible'); }
-        });
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Smooth nav scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const target = document.querySelector(a.getAttribute('href'));
