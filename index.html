@@ -70,14 +70,16 @@
             transition: background 0.35s ease, border-color 0.35s ease;
         }
         .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-            height: 60px; display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 1.25rem;
+            height: 56px; display: flex; align-items: center; justify-content: space-between;
         }
         .nav-logo {
             font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
             letter-spacing: -0.02em; color: var(--text); text-decoration: none;
         }
         .nav-logo span { color: var(--accent); }
+
+        /* Desktop nav links */
         .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
         .nav-links a {
             font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
@@ -87,19 +89,64 @@
             transition: color 0.2s, background 0.2s;
         }
         .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+
+        /* Nav right controls */
+        .nav-controls { display: flex; align-items: center; gap: 0.5rem; }
         .theme-btn {
             width: 36px; height: 36px; border: 1px solid var(--border);
             border-radius: 8px; background: var(--surface); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); transition: all 0.2s; margin-left: 0.5rem;
+            color: var(--text-muted); transition: all 0.2s;
         }
         .theme-btn:hover { background: var(--surface-2); color: var(--text); }
         .theme-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 
+        /* Hamburger */
+        .hamburger-btn {
+            width: 36px; height: 36px; border: 1px solid var(--border);
+            border-radius: 8px; background: var(--surface); cursor: pointer;
+            display: none; align-items: center; justify-content: center;
+            color: var(--text-muted); transition: all 0.2s; flex-direction: column; gap: 4px;
+        }
+        .hamburger-btn span {
+            display: block; width: 16px; height: 1.5px;
+            background: currentColor; border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            position: fixed; top: 56px; left: 0; right: 0; z-index: 999;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px) saturate(1.4);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.25rem 1rem;
+            transform: translateY(-8px); opacity: 0;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            pointer-events: none;
+        }
+        .mobile-nav.open {
+            transform: translateY(0); opacity: 1;
+            pointer-events: auto;
+        }
+        .mobile-nav a {
+            display: block; padding: 0.7rem 0.75rem;
+            font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+            color: var(--text-muted); text-decoration: none;
+            border-radius: 8px; transition: color 0.2s, background 0.2s;
+            border-bottom: 1px solid var(--border);
+        }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover { color: var(--text); background: var(--surface-2); }
+
         /* ─── HERO ─── */
         .hero {
             min-height: 100vh; display: flex; align-items: center;
-            padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
+            padding: 7rem 1.25rem 3rem; position: relative; overflow: hidden;
         }
         .hero-bg {
             position: absolute; inset: 0; z-index: 0;
@@ -135,13 +182,13 @@
             50% { opacity: 0.5; transform: scale(0.8); }
         }
         .hero h1 {
-            font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.5rem);
+            font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.5rem);
             font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
             margin-bottom: 1.25rem; color: var(--text);
         }
         .hero h1 em { font-style: normal; color: var(--accent); }
         .hero-sub {
-            font-size: 1.05rem; color: var(--text-muted); line-height: 1.75;
+            font-size: 1rem; color: var(--text-muted); line-height: 1.75;
             margin-bottom: 2rem; max-width: 480px;
         }
         .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -158,7 +205,25 @@
         .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
         .btn-ghost:hover { background: var(--surface-2); border-color: var(--text-muted); }
 
-        /* Hero stats */
+        /* Mobile stats strip */
+        .mobile-stats-strip {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        .mobile-stat {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 10px; padding: 0.875rem 1rem;
+            display: flex; flex-direction: column; gap: 0.2rem;
+        }
+        .mobile-stat-val {
+            font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+            color: var(--accent); line-height: 1;
+        }
+        .mobile-stat-label { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+
+        /* Hero stats (desktop) */
         .hero-stats {
             background: var(--surface); border: 1px solid var(--border);
             border-radius: 16px; padding: 2rem; box-shadow: var(--card-shadow);
@@ -178,17 +243,17 @@
         .stat-value.accent { color: var(--accent); }
 
         /* ─── SECTIONS ─── */
-        .section { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+        .section { max-width: 1200px; margin: 0 auto; padding: 4rem 1.25rem; }
         .section-label {
             font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
             color: var(--accent); margin-bottom: 0.5rem;
         }
         .section-title {
-            font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-family: var(--font-display); font-size: clamp(1.6rem, 5vw, 2.6rem);
             font-weight: 700; letter-spacing: -0.025em; color: var(--text); margin-bottom: 3rem;
         }
         .section-title em { font-style: normal; -webkit-text-stroke: 1.5px var(--text); color: transparent; }
-        hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0 0 3rem 0; }
+        hr.section-rule { border: none; border-top: 1px solid var(--border); margin: 0 0 2rem 0; }
 
         /* ─── ABOUT ─── */
         .about-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4rem; align-items: start; }
@@ -339,7 +404,7 @@
             border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
         }
         .cert-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-        .cert-info { flex: 1; }
+        .cert-info { flex: 1; min-width: 0; }
         .cert-type { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
         .cert-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--text); }
         .cert-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); margin-top: 0.25rem; display: flex; align-items: center; gap: 0.3rem; }
@@ -348,7 +413,7 @@
         /* ─── PUBLICATIONS ─── */
         .pubs-list { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
         .pub-item {
-            padding: 1.5rem 1.5rem 1.5rem 4rem; border-bottom: 1px solid var(--border);
+            padding: 1.25rem 1.25rem 1.25rem 3.5rem; border-bottom: 1px solid var(--border);
             transition: background 0.2s; position: relative;
         }
         .pub-item:last-child { border-bottom: none; }
@@ -359,7 +424,7 @@
         .pub-item h3 a svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; opacity: 0.5; }
         .pub-meta { font-family: var(--font-mono); font-size: 0.73rem; color: var(--text-muted); margin-bottom: 0.4rem; }
         .pub-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
-        .pub-index { position: absolute; top: 1.5rem; left: 1.4rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--border); font-weight: 500; }
+        .pub-index { position: absolute; top: 1.25rem; left: 1rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--border); font-weight: 500; }
         .subsection-label {
             font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
             color: var(--text); margin: 3rem 0 1rem 0;
@@ -372,7 +437,7 @@
         .exp-list { display: flex; flex-direction: column; gap: 1rem; }
         .exp-item {
             background: var(--surface); border: 1px solid var(--border);
-            border-radius: 12px; padding: 1.75rem;
+            border-radius: 12px; padding: 1.5rem 1.5rem 1.5rem 1.75rem;
             transition: box-shadow 0.25s; position: relative; overflow: hidden;
         }
         .exp-item::before {
@@ -413,7 +478,7 @@
         }
         .contact-dot svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
         .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
-        .contact-val { font-size: 0.9rem; color: var(--text); }
+        .contact-val { font-size: 0.9rem; color: var(--text); word-break: break-all; }
         .contact-val a { color: var(--text); text-decoration: none; transition: color 0.2s; }
         .contact-val a:hover { color: var(--accent); }
         .connect-panel {
@@ -438,7 +503,7 @@
         .btn-white:hover svg { transform: translate(2px, -2px); }
 
         /* ─── FOOTER ─── */
-        footer { border-top: 1px solid var(--border); background: var(--surface); padding: 2rem; text-align: center; }
+        footer { border-top: 1px solid var(--border); background: var(--surface); padding: 2rem 1.25rem; text-align: center; }
         footer p { font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-mono); }
         footer strong { color: var(--text); font-weight: 500; }
 
@@ -446,23 +511,114 @@
         .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 900px) {
-            .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-            .hero-stats { display: none; }
-            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .skills-grid { grid-template-columns: repeat(2, 1fr); }
-            .projects-grid { grid-template-columns: 1fr; }
-            .achievements-grid { grid-template-columns: 1fr 1fr; }
-            .certs-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .nav-links li:not(.theme-wrap) { display: none; }
+        /* ─── SCROLL TO TOP ─── */
+        .scroll-top {
+            position: fixed; bottom: 1.5rem; right: 1.25rem; z-index: 500;
+            width: 40px; height: 40px; border-radius: 10px;
+            background: var(--accent); color: #fff; border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 2px 12px rgba(201,80,30,0.4);
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
         }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2.4rem; }
-            .skills-grid { grid-template-columns: 1fr 1fr; }
-            .achievements-grid { grid-template-columns: 1fr; }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .scroll-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ─── RESPONSIVE: TABLET ─── */
+        @media (max-width: 1024px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ─── RESPONSIVE: MOBILE ─── */
+        @media (max-width: 768px) {
+            /* Nav */
+            .nav-links { display: none; }
+            .hamburger-btn { display: flex; }
+
+            /* Hero */
+            .hero {
+                padding: 5.5rem 1.25rem 2.5rem;
+                min-height: auto;
+                align-items: flex-start;
+            }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .hero-stats { display: none; }
+            .mobile-stats-strip { display: grid; }
+            .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+            .hero-sub { font-size: 0.95rem; }
+            .hero-btns { gap: 0.6rem; }
+            .btn { font-size: 0.85rem; padding: 0.65rem 1.2rem; }
+
+            /* Sections */
             .section { padding: 3rem 1.25rem; }
+            .section-title { margin-bottom: 1.75rem; }
+            hr.section-rule { margin-bottom: 1.5rem; }
+
+            /* About */
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .numbers-panel { display: none; } /* Stats already shown in mobile strip */
+            /* Show numbers panel inline on mobile differently */
+            .mobile-numbers { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+            .mobile-number-item {
+                background: var(--surface); border: 1px solid var(--border);
+                border-radius: 10px; padding: 1rem;
+            }
+            .mobile-number-item .number-val { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--accent); display: block; }
+            .mobile-number-item .number-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+            /* Skills */
+            .skills-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .skill-card { padding: 1.25rem; }
+
+            /* Projects */
+            .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+            /* Achievements */
+            .achievements-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .ach-card { padding: 1.25rem; }
+
+            /* Certifications */
+            .certs-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .cert-card { padding: 1.25rem; }
+            .cert-name { font-size: 0.88rem; }
+
+            /* Publications */
+            .pub-item { padding: 1rem 1rem 1rem 2.75rem; }
+            .pub-index { top: 1rem; left: 0.75rem; }
+            .subsection-label { font-size: 0.95rem; margin: 2rem 0 0.75rem; }
+
+            /* Experience */
+            .exp-header {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+            .exp-date { align-self: flex-start; }
+            .exp-item { padding: 1.25rem 1.25rem 1.25rem 1.5rem; }
+
+            /* Contact */
+            .contact-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .contact-panel { padding: 1.5rem; }
+            .connect-panel { padding: 2rem; min-height: auto; }
+            .connect-panel h3 { font-size: 1.3rem; }
+
+            /* Scroll top */
+            .scroll-top { bottom: 1.25rem; right: 1.25rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: clamp(1.85rem, 8.5vw, 2.4rem); }
+            .mobile-stats-strip { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+            .mobile-stat-val { font-size: 1.3rem; }
+            .skills-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+            .skill-card { padding: 1rem; }
+            .skill-card h3 { font-size: 0.82rem; }
+            .pub-item h3 { font-size: 0.88rem; }
         }
     </style>
 </head>
@@ -480,13 +636,27 @@
             <li><a href="#publications">Research</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="theme-wrap">
-                <button class="theme-btn" id="themeBtn" title="Toggle theme">
-                    <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                </button>
-            </li>
         </ul>
+        <div class="nav-controls">
+            <button class="theme-btn" id="themeBtn" title="Toggle theme">
+                <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button class="hamburger-btn" id="hamburgerBtn" title="Menu" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<nav class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#achievements" class="mobile-nav-link">Awards</a>
+    <a href="#certifications" class="mobile-nav-link">Certifications</a>
+    <a href="#publications" class="mobile-nav-link">Research</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
 </nav>
 
 <!-- HERO -->
@@ -507,6 +677,25 @@
                     Get In Touch
                     <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </a>
+            </div>
+            <!-- Mobile stats strip (shown only on mobile) -->
+            <div class="mobile-stats-strip fade-up">
+                <div class="mobile-stat">
+                    <span class="mobile-stat-val">9</span>
+                    <span class="mobile-stat-label">Research Papers</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-val">3</span>
+                    <span class="mobile-stat-label">Patents</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-val">97%</span>
+                    <span class="mobile-stat-label">AI Accuracy</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-val">500+</span>
+                    <span class="mobile-stat-label">Platform Users</span>
+                </div>
             </div>
         </div>
         <div class="hero-stats fade-up">
@@ -533,7 +722,7 @@
             <p>My work has been recognized globally — winning the <strong>Intel AI Challenge 2025</strong> — and I've published 9 research papers in Scopus-indexed journals while securing 3 patents in cybersecurity and AI domains.</p>
             <div class="focus-box">
                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <p><strong>Current Focus:</strong> Leveraging technical expertise to drive complex technology initiatives in project management roles, while working in pentesting, GRC & innovative solutions that represent a blend of AIML AND Cybersecurity</p>
+                <p><strong>Current Focus:</strong> Leveraging technical expertise to drive complex technology initiatives in project management roles, while working in pentesting, GRC &amp; innovative solutions that represent a blend of AIML AND Cybersecurity</p>
             </div>
         </div>
         <div class="numbers-panel">
@@ -562,7 +751,7 @@
             <ul class="skill-list">
                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Python</li>
                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>C</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>HTML / CSS / JavaScript</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>HTML / CSS / JS</li>
                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bash / Shell</li>
             </ul>
         </div>
@@ -606,7 +795,6 @@
     <div class="section-title">Featured <em>Projects</em></div>
     <hr class="section-rule">
     <div class="projects-grid fade-up">
-
         <div class="project-card">
             <svg class="project-corner" viewBox="0 0 64 64" fill="none"><circle cx="64" cy="0" r="48" stroke="var(--accent)" stroke-width="1.5"/><circle cx="64" cy="0" r="30" stroke="var(--accent)" stroke-width="1.5"/></svg>
             <div class="project-top">
@@ -623,7 +811,6 @@
                 <div class="tag-row"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">ML</span><span class="tag">Bootstrap 5</span></div>
             </div>
         </div>
-
         <div class="project-card">
             <svg class="project-corner" viewBox="0 0 64 64" fill="none"><rect x="20" y="-10" width="54" height="54" stroke="var(--accent)" stroke-width="1.5" transform="rotate(15 20 -10)"/></svg>
             <div class="project-top">
@@ -640,7 +827,6 @@
                 <div class="tag-row"><span class="tag">Bash</span><span class="tag">Wazuh</span><span class="tag">SIEM</span><span class="tag">NumPy</span></div>
             </div>
         </div>
-
         <div class="project-card">
             <svg class="project-corner" viewBox="0 0 64 64" fill="none"><polygon points="64,0 64,56 8,56" stroke="var(--accent)" stroke-width="1.5"/></svg>
             <div class="project-top">
@@ -657,7 +843,6 @@
                 <div class="tag-row"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">BERT</span><span class="tag">Ollama</span></div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -667,14 +852,12 @@
     <div class="section-title">Awards &amp; <em>Recognition</em></div>
     <hr class="section-rule">
     <div class="achievements-grid fade-up">
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="var(--accent)" stroke-width="7"/></svg>
             <div class="ach-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Global Competition</div>
             <h3><a href="https://drive.google.com/file/d/1kqX25ViinUQMjZVYrkDuyfuEU366hkwy/view?usp=drive_link" target="_blank">Intel AI Challenge 2025</a></h3>
             <p><strong>Winner — Global Level.</strong> Project: Deepfake Detective — Securing Social Integrity, Uncovering Faux AI Content.</p>
         </div>
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,68 4,68" stroke="var(--accent)" stroke-width="7"/></svg>
             <div class="ach-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>National Competition</div>
@@ -682,15 +865,13 @@
             <p><strong>Winner</strong> — Delhi Police. Theme: Counteracting Misinformation and Fake News.</p>
             <a href="https://drive.google.com/file/d/1eqEnTqD6DdJqKZjmqMFBF08Tm0XUn6qF/view?usp=drive_link" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Certificate</a>
         </div>
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><rect x="8" y="8" width="64" height="64" stroke="var(--accent)" stroke-width="7"/></svg>
             <div class="ach-badge"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>Runner Up</div>
             <h3><a href="https://drive.google.com/file/d/1YlqgHX8p5vox-Xl0N1BwNFA8Fq-bPghP/view?usp=drive_link" target="_blank">Tantravihar 2025</a></h3>
-            <p><strong>Runner Up</strong> — Vidyalankar Institute of Technology. Project: TrustTrace — Multimedia Deepfake Detection.</p>
+            <p><strong>Runner Up</strong> — Vidyalankar Institute of Technology. Project: TrustTrace.</p>
             <a href="https://drive.google.com/file/d/1HXpofNPHnRVBmbUrM7XnAzwng3xkBTuM/view?usp=drive_link" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Award</a>
         </div>
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><polygon points="40,4 76,28 62,68 18,68 4,28" stroke="var(--accent)" stroke-width="7"/></svg>
             <div class="ach-badge"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>Runner Up</div>
@@ -698,14 +879,12 @@
             <p><strong>Runner Up</strong> — Mukesh Patel School of Technology Management and Engineering. Theme: Software for Social Cause.</p>
             <a href="https://drive.google.com/file/d/1BErpudmzZdt7ux7WNn8D3XuOzo_78GTS/view?usp=sharing" target="_blank" class="ach-proof"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>View Award</a>
         </div>
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="var(--accent-warm)" stroke-width="5"/><circle cx="40" cy="40" r="14" stroke="var(--accent-warm)" stroke-width="3"/></svg>
             <div class="ach-badge gold"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Quality Excellence</div>
             <h3>CCQC Gold Trophy</h3>
             <p><strong>Gold Trophy</strong> — Quality Circle Forum of India. Projects: <a href="https://drive.google.com/file/d/1M3s2eQlqkODIlB9IF6q-h2F90rGllbxo/view?usp=drive_link" target="_blank" style="color:var(--accent)">TrustTrace</a> &amp; <a href="https://drive.google.com/file/d/1UT_ZmEwoiE7QvMw1Ujb9aXgBKAbsbf__/view?usp=drive_link" target="_blank" style="color:var(--accent)">LinuxAdmin</a>.</p>
         </div>
-
         <div class="ach-card">
             <svg class="ach-deco" viewBox="0 0 80 80" fill="none"><line x1="8" y1="8" x2="72" y2="72" stroke="var(--accent)" stroke-width="6"/><line x1="72" y1="8" x2="8" y2="72" stroke="var(--accent)" stroke-width="6"/><circle cx="40" cy="40" r="18" stroke="var(--accent)" stroke-width="4"/></svg>
             <div class="ach-badge"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>CTF Competitions</div>
@@ -713,7 +892,6 @@
             <p>AIR 30 — Pentathon 2025</p>
             <p>AIR 36 — DawgCTF 2025</p>
         </div>
-
     </div>
 </div>
 
@@ -747,28 +925,26 @@
     <div class="section-label">// 006</div>
     <div class="section-title">Research &amp; <em>Patents</em></div>
     <hr class="section-rule">
-
     <div class="subsection-label">
         <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         Published Research — 9 Papers
     </div>
     <div class="pubs-list fade-up">
         <div class="pub-item"><div class="pub-index">01</div><h3><a href="https://drive.google.com/file/d/1fOIWOq6Dw8Q02NTbXPVmLWYQZ9gSY5mf/view?usp=sharing" target="_blank">ResNet50 DeepFake Detector: Unmasking Reality <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Indian Journal of Science and Technology, 2024 — Scopus-Indexed</div><div class="pub-desc">Achieved 97% accuracy in deepfake detection using ResNet50 with image scraping feature.</div></div>
-        <div class="pub-item"><div class="pub-index">02</div><h3><a href="https://drive.google.com/file/d/12G34_BuDykeWevbD3pq5fglcvZiwF1b-/view?usp=drive_link" target="_blank">Deepfake Detection Using EfficientNetB7: Efficacy, Efficiency, and Adaptability <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">International Journal of Intelligent Systems and Applications in Engineering, 2024</div><div class="pub-desc">Comprehensive analysis of EfficientNetB7 achieving 85% accuracy in deepfake detection.</div></div>
-        <div class="pub-item"><div class="pub-index">03</div><h3><a href="https://drive.google.com/file/d/1HM0ARx2KSUekPAn6bTidpb0xyT2rlaYV/view?usp=drive_link" target="_blank">Securing Visual Integrity: EfficientNetB4-Based Solution with Attention Layers <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 94% accuracy on FaceForensics and DFDC datasets using attention mechanisms and Siamese training.</div></div>
-        <div class="pub-item"><div class="pub-index">04</div><h3><a href="https://drive.google.com/file/d/1OinQU7kVaJSHVDtPwBvGlhgEaHih9Ngz/view?usp=drive_link" target="_blank">Advancements in Video Deepfake Detection: Integration of ResNet50, EfficientNetB7, and EfficientNetAutoAttB4 <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Ensemble model approach for comprehensive deepfake detection across multiple architectures.</div></div>
-        <div class="pub-item"><div class="pub-index">05</div><h3><a href="https://drive.google.com/file/d/1i4ok-zjJGvpyApluESptTTB-42dezABt/view?usp=drive_link" target="_blank">Improving Deepfake Audio Detection: A Support Vector Machine Approach with MFCCs <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 97.28% accuracy in audio deepfake detection using SVM and Mel-Frequency Cepstral Coefficients.</div></div>
+        <div class="pub-item"><div class="pub-index">02</div><h3><a href="https://drive.google.com/file/d/12G34_BuDykeWevbD3pq5fglcvZiwF1b-/view?usp=drive_link" target="_blank">Deepfake Detection Using EfficientNetB7 <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">International Journal of Intelligent Systems and Applications in Engineering, 2024</div><div class="pub-desc">Comprehensive analysis of EfficientNetB7 achieving 85% accuracy in deepfake detection.</div></div>
+        <div class="pub-item"><div class="pub-index">03</div><h3><a href="https://drive.google.com/file/d/1HM0ARx2KSUekPAn6bTidpb0xyT2rlaYV/view?usp=drive_link" target="_blank">Securing Visual Integrity: EfficientNetB4 with Attention Layers <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 94% accuracy on FaceForensics and DFDC datasets using attention mechanisms.</div></div>
+        <div class="pub-item"><div class="pub-index">04</div><h3><a href="https://drive.google.com/file/d/1OinQU7kVaJSHVDtPwBvGlhgEaHih9Ngz/view?usp=drive_link" target="_blank">Advancements in Video Deepfake Detection: ResNet50, EfficientNetB7, and EfficientNetAutoAttB4 <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Ensemble model approach for comprehensive deepfake detection across multiple architectures.</div></div>
+        <div class="pub-item"><div class="pub-index">05</div><h3><a href="https://drive.google.com/file/d/1i4ok-zjJGvpyApluESptTTB-42dezABt/view?usp=drive_link" target="_blank">Improving Deepfake Audio Detection: SVM with MFCCs <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Achieved 97.28% accuracy in audio deepfake detection using SVM and Mel-Frequency Cepstral Coefficients.</div></div>
         <div class="pub-item"><div class="pub-index">06</div><h3><a href="https://drive.google.com/file/d/19Zsyw546FrlEXPwDI85CFjYQgSdLz-6q/view?usp=drive_link" target="_blank">Harmonizing Algorithms: Enhancing Audio Deepfake Detection <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Multi-faceted approach integrating MFCC-based SVM and Neural Networks for audio verification.</div></div>
-        <div class="pub-item"><div class="pub-index">07</div><h3><a href="https://drive.google.com/file/d/1Oa6i_yD1724SBykKb5DOnB3P16wAQ75v/view?usp=drive_link" target="_blank">Enhancing Audio Deepfake Detection using Support Vector Machines and Mel-Frequency Cepstral Coefficients <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis using autoencoders, GANs, and CNNs for robust audio verification.</div></div>
-        <div class="pub-item"><div class="pub-index">08</div><h3><a href="https://drive.google.com/file/d/1UilUj-9DPIg8Um_G-IgnO2ZkwqAXAtZ_/view?usp=drive_link" target="_blank">Deepfake Technology and Image Forensics: Advancements, Challenges, and Ethical Implications <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis of deepfake detection methodologies using autoencoders, GANs, and CNNs.</div></div>
+        <div class="pub-item"><div class="pub-index">07</div><h3><a href="https://drive.google.com/file/d/1Oa6i_yD1724SBykKb5DOnB3P16wAQ75v/view?usp=drive_link" target="_blank">Audio Deepfake Detection using SVM and MFCCs <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis using autoencoders, GANs, and CNNs for robust audio verification.</div></div>
+        <div class="pub-item"><div class="pub-index">08</div><h3><a href="https://drive.google.com/file/d/1UilUj-9DPIg8Um_G-IgnO2ZkwqAXAtZ_/view?usp=drive_link" target="_blank">Deepfake Technology and Image Forensics: Advancements and Ethical Implications <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">IJISAE, 2024</div><div class="pub-desc">Comprehensive analysis of deepfake detection methodologies using autoencoders, GANs, and CNNs.</div></div>
     </div>
-
     <div class="subsection-label">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
         Patents
     </div>
     <div class="pubs-list fade-up">
-        <div class="pub-item"><div class="pub-index">P1</div><h3><a href="https://drive.google.com/file/d/1h3OE0UCZ6ks1pSZIat1Qk6ot4FWAifWg/view?usp=drive_link" target="_blank">Deep-Fake Detection System and Method <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Patent No. 557207 — Government of India Patent Office · Published December 2024 · Filed April 10, 2024</div><div class="pub-desc">System and method for detecting potential misinformation spread through AI-manipulated multimedia content.</div></div>
+        <div class="pub-item"><div class="pub-index">P1</div><h3><a href="https://drive.google.com/file/d/1h3OE0UCZ6ks1pSZIat1Qk6ot4FWAifWg/view?usp=drive_link" target="_blank">Deep-Fake Detection System and Method <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Patent No. 557207 — Government of India Patent Office · Published December 2024</div><div class="pub-desc">System and method for detecting potential misinformation spread through AI-manipulated multimedia content.</div></div>
         <div class="pub-item"><div class="pub-index">P2</div><h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Multi-Modal Deepfake Detection <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Status: Approved — 2024</div><div class="pub-desc">Advanced detection system for multimedia deepfake identification across image, video, and audio modalities.</div></div>
         <div class="pub-item"><div class="pub-index">P3</div><h3><a href="https://drive.google.com/file/d/1unrGPa3hG_VzQeLqwCr18Om6hieQaRXv/view?usp=drive_link" target="_blank">Network Security Management System <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></h3><div class="pub-meta">Status: Approved — 2024</div><div class="pub-desc">Centralized security and management system for network-connected devices in enterprise environments.</div></div>
     </div>
@@ -826,7 +1002,7 @@
 </div>
 
 <!-- CONTACT -->
-<div class="section" id="contact" style="padding-top:0; padding-bottom:6rem;">
+<div class="section" id="contact" style="padding-top:0; padding-bottom:5rem;">
     <div class="section-label">// 008</div>
     <div class="section-title">Get In <em>Touch</em></div>
     <hr class="section-rule">
@@ -835,11 +1011,11 @@
             <h3>Contact Information</h3>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                <div><div class="contact-label">Email</div><div class="contact-val">prathamshah123247@gmail.com</div></div>
+                <div><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:prathamshah123247@gmail.com">prathamshah123247@gmail.com</a></div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 5.5 5.5l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                <div><div class="contact-label">Phone</div><div class="contact-val">+91 9699143903</div></div>
+                <div><div class="contact-label">Phone</div><div class="contact-val"><a href="tel:+919699143903">+91 9699143903</a></div></div>
             </div>
             <div class="contact-item">
                 <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
@@ -856,11 +1032,6 @@
                     <g stroke="rgba(255,255,255,0.07)" stroke-width="1" fill="none">
                         <circle cx="400" cy="20" r="80"/><circle cx="400" cy="20" r="130"/><circle cx="400" cy="20" r="185"/>
                         <line x1="0" y1="140" x2="480" y2="140"/><line x1="240" y1="0" x2="240" y2="280"/>
-                    </g>
-                    <g stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none">
-                        <path d="M40 220 L40 140 L110 140"/>
-                        <circle cx="40" cy="140" r="4" fill="rgba(255,255,255,0.3)"/>
-                        <circle cx="110" cy="140" r="3" fill="rgba(255,255,255,0.3)"/>
                     </g>
                 </svg>
             </div>
@@ -880,21 +1051,24 @@
     <p style="margin-top:0.5rem;">© 2026 · All Rights Reserved</p>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTopBtn" title="Back to top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
+    /* ── THEME ── */
     const btn = document.getElementById('themeBtn');
     const icon = document.getElementById('themeIcon');
     const body = document.body;
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     const sunSVG = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
     const moonSVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
-
     function setTheme(dark) {
         body.classList.toggle('dark', dark);
         icon.innerHTML = dark ? moonSVG : sunSVG;
     }
-
     setTheme(saved === 'dark' || (!saved && prefersDark));
     btn.addEventListener('click', () => {
         const isDark = !body.classList.contains('dark');
@@ -902,16 +1076,55 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 
+    /* ── HAMBURGER ── */
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        mobileNav.style.display = 'block';
+        hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    // Close on link click
+    document.querySelectorAll('.mobile-nav a').forEach(a => {
+        a.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('open');
+        });
+    });
+
+    /* ── FADE UP ── */
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+    /* ── SMOOTH SCROLL ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             const target = document.querySelector(a.getAttribute('href'));
-            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            if (target) {
+                e.preventDefault();
+                const offset = 64;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
         });
+    });
+
+    /* ── SCROLL TO TOP ── */
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── MOBILE NAV: show/hide ── */
+    // Ensure display none when closed after transition
+    mobileNav.addEventListener('transitionend', () => {
+        if (!mobileNav.classList.contains('open')) {
+            mobileNav.style.display = '';
+        }
     });
 </script>
 </body>
