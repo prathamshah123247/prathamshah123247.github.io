@@ -47,17 +47,6 @@ body{
   overflow-x:hidden;
 }
 
-/* Scanline overlay */
-body::after{
-  content:'';
-  position:fixed;inset:0;
-  background:repeating-linear-gradient(
-    0deg,
-    transparent,transparent 2px,
-    rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px
-  );
-  pointer-events:none;z-index:9999;
-}
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:4px}
@@ -571,12 +560,12 @@ footer strong{color:var(--green)}
 
 /* Light mode (default is dark, this flips to light) */
 body.light{
-  --bg:#f5f5f0;--bg1:#ffffff;--bg2:#f0f0eb;--bg3:#e8e8e2;
-  --border:#ddd;--border2:#ccc;
-  --text:#111;--text-dim:#555;--text-dimmer:#999;
-  --green:#1a7a4a;--green-dim:rgba(26,122,74,0.08);--green-glow:rgba(26,122,74,0.2);
-  --cyan:#1a6b9a;--cyan-dim:rgba(26,107,154,0.08);
-  --amber:#a07000;
+  --bg:#f0f0ea;--bg1:#ffffff;--bg2:#e8e8e2;--bg3:#dfdfd8;
+  --border:#ccc;--border2:#bbb;
+  --text:#0a0a0a;--text-dim:#333;--text-dimmer:#666;
+  --green:#0d6e3f;--green-dim:rgba(13,110,63,0.1);--green-glow:rgba(13,110,63,0.25);
+  --cyan:#0a5a85;--cyan-dim:rgba(10,90,133,0.1);
+  --amber:#8a6000;
 }
 
 /* ── RESPONSIVE ── */
