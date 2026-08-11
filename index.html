@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0b16">
 <meta name="description" content="Pratham Shah — Cybersecurity researcher, AI/ML builder, patent holder and B.Tech Cyber Security student.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; script-src 'self' 'sha256-mKIWBMNdgZgC2dmuVs4owsrUD8hfVh5qHsbmDRm635c='; style-src 'self' 'sha256-YpAnGO6M6Z+7dO5nAPZxAH/wBvO6Pdr8dCvU64RZX5g='; img-src 'self' data:; font-src 'none'; connect-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; script-src 'self' 'sha256-mKIWBMNdgZgC2dmuVs4owsrUD8hfVh5qHsbmDRm635c='; style-src 'self' 'sha256-my65ic/CRbAM/IQMn39fqkUHg6YT5nWm3d7DyMx+10Y='; img-src 'self' data:; font-src 'none'; connect-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
 <title>Pratham Shah — Cybersecurity Researcher</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
@@ -318,6 +318,245 @@ body.light .workstation{background:linear-gradient(145deg,rgba(255,255,255,.98),
 @media(max-width:520px){.footer{padding:0 16px 26px}.footer-inner{gap:14px}.footer-links{gap:12px 16px}.footer-meta{font-size:8px}.aurora-a{width:70vw;height:70vw}.aurora-b{width:60vw;height:60vw}.aurora-c{width:55vw;height:55vw}.grid-floor{background-size:38px 38px}.scan-beam{height:1px}}
 @media(prefers-reduced-motion:reduce){.aurora,.grid-floor,.scan-beam,.hero:after,.orbit,.orbit:after,.workstation,.panel:after,.skill:after,.award:after,.cert:after,.project-mini:after,.project-main:after{animation:none!important}.visual-field{display:none}}
 
+
+/* Mobile responsive hardening — desktop styles remain unchanged. */
+@media (max-width: 800px) {
+  html, body { width:100%; max-width:100%; overflow-x:hidden; }
+  body { min-width:0; }
+  .wrap, .nav-inner, main, section, .hero, .hero-grid, .hero-copy-col, .hero-art,
+  .about, .contact, .skill-grid, .project-feature, .project-side, .awards,
+  .research-wrap, .cert-grid, .numbers, .footer, .footer-inner {
+    min-width:0;
+    max-width:100%;
+  }
+
+  .status {
+    width:100%;
+    box-sizing:border-box;
+    justify-content:flex-start;
+    padding-inline:16px;
+    gap:9px;
+    font-size:8px;
+    letter-spacing:.07em;
+    overflow:hidden;
+  }
+  .status > * { flex:0 0 auto; }
+  .status > span:not(.pulse) { white-space:nowrap; }
+
+  .nav { height:64px; }
+  .nav-inner { padding-inline:16px; gap:12px; }
+  .logo { font-size:18px; }
+  .nav-actions { margin-left:auto; }
+  .icon-btn, .menu-btn { width:42px; height:42px; }
+  .mobile-menu { left:12px; right:12px; width:auto; top:70px; max-height:calc(100svh - 84px); overflow:auto; }
+
+  .hero {
+    min-height:0;
+    padding:56px 0 58px;
+    overflow:hidden;
+  }
+  .hero-grid {
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:34px;
+    width:100%;
+  }
+  .hero-copy-col { width:100%; }
+  .eyebrow {
+    font-size:9px;
+    margin-bottom:18px;
+    gap:8px;
+  }
+  .eyebrow:before { width:24px; }
+  h1 {
+    width:100%;
+    max-width:none;
+    font-size:clamp(45px,13.8vw,70px);
+    line-height:.9;
+    letter-spacing:-.07em;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .hero-copy {
+    max-width:100%;
+    font-size:14px;
+    line-height:1.7;
+    margin-top:20px;
+  }
+  .hero-actions {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    width:100%;
+    margin-top:24px;
+  }
+  .hero-actions .btn {
+    width:100%;
+    min-height:50px;
+    box-sizing:border-box;
+  }
+
+  .hero-art {
+    width:100%;
+    min-height:330px;
+    height:min(92vw,380px);
+    margin:0;
+    overflow:hidden;
+    display:grid;
+    place-items:center;
+  }
+  .orbit {
+    width:min(310px,78vw);
+    max-width:310px;
+    position:absolute;
+  }
+  .workstation {
+    position:relative;
+    z-index:3;
+    width:min(320px,calc(100% - 28px));
+    max-width:320px;
+    box-sizing:border-box;
+    transform:rotate(0deg);
+    margin:0 auto;
+  }
+  .workstation-head {
+    padding:12px 14px;
+    gap:8px;
+    font-size:9px;
+  }
+  .workstation-body { padding:18px; }
+  .work-title { font-size:clamp(25px,7vw,31px); line-height:.95; }
+  .work-list { gap:8px; }
+  .work-list > div { grid-template-columns:22px 1fr; }
+  .work-list small { grid-column:2; }
+  .work-footer { font-size:7px; gap:8px; }
+  .hero-side-note { display:none; }
+
+  .marquee {
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+    height:48px;
+  }
+  .marquee-track {
+    animation-duration:34s;
+    transform:translate3d(0,0,0);
+    backface-visibility:hidden;
+  }
+  .marquee span {
+    padding:15px 18px;
+    font-size:9px;
+    white-space:nowrap;
+  }
+
+  .section { padding:74px 0; overflow:hidden; }
+  .section-head {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-bottom:30px;
+  }
+  .section-no { padding-top:0; font-size:9px; }
+  .section-title {
+    font-size:clamp(42px,12vw,58px);
+    line-height:.95;
+    max-width:100%;
+  }
+  .section-intro { max-width:100%; font-size:13px; line-height:1.7; }
+
+  .about, .contact { grid-template-columns:1fr; gap:14px; }
+  .about-copy, .contact-info, .contact-cta { padding:22px; }
+  .about-copy p { font-size:14px; line-height:1.75; }
+  .focus { font-size:12px; line-height:1.55; }
+  .numbers { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .number { min-width:0; min-height:132px; padding:18px; }
+  .number b { font-size:clamp(34px,10vw,46px); }
+  .number span { font-size:8px; line-height:1.5; }
+
+  .skill-grid, .awards, .cert-grid { grid-template-columns:1fr; gap:12px; }
+  .skill, .award, .cert { min-width:0; min-height:0; padding:20px; }
+  .skill { min-height:210px; }
+
+  .project-feature { grid-template-columns:1fr; gap:12px; }
+  .project-main { min-height:0; padding:24px; }
+  .project-main h3 { font-size:clamp(50px,15vw,68px); overflow-wrap:break-word; }
+  .project-side { grid-template-columns:1fr; gap:12px; }
+  .project-mini { min-height:0; padding:22px; }
+
+  .research-wrap { grid-template-columns:1fr; }
+  .research-nav { position:relative; top:auto; }
+  .research-item {
+    grid-template-columns:42px minmax(0,1fr);
+    gap:12px;
+    min-width:0;
+  }
+  .r-title, .r-desc { overflow-wrap:anywhere; }
+
+  .job { padding-left:22px; }
+  .job-head { flex-direction:column; align-items:flex-start; gap:7px; }
+  .job-role { font-size:22px; }
+  .job-meta { white-space:normal; }
+
+  .footer {
+    width:100%;
+    box-sizing:border-box;
+    padding:0 16px 28px;
+    overflow:hidden;
+  }
+  .footer-inner {
+    grid-template-columns:1fr;
+    gap:18px;
+    text-align:center;
+    padding-top:24px;
+  }
+  .footer-brand { justify-items:center; }
+  .footer-links { justify-content:center; gap:12px 16px; }
+  .footer-meta { justify-content:center; flex-wrap:wrap; white-space:normal; }
+  .footer:after { margin-top:18px; }
+
+  #top { right:14px; bottom:14px; width:44px; height:44px; }
+
+  /* Animation failure must never hide mobile content. */
+  .motion-ready .stagger:not(.show) > * {
+    opacity:1;
+    transform:none;
+  }
+  .motion-ready .stagger.show > * {
+    animation:rise .6s cubic-bezier(.2,.75,.2,1) both;
+  }
+  .motion-ready .stagger.show > :nth-child(2) { animation-delay:.06s; }
+  .motion-ready .stagger.show > :nth-child(3) { animation-delay:.12s; }
+  .motion-ready .stagger.show > :nth-child(4) { animation-delay:.18s; }
+  .motion-ready .stagger.show > :nth-child(5) { animation-delay:.24s; }
+  .motion-ready .stagger.show > :nth-child(6) { animation-delay:.30s; }
+}
+
+@media (max-width:520px) {
+  .status { height:30px; }
+  .nav-inner { padding-inline:14px; }
+  .hero { padding-top:42px; }
+  .hero-grid { gap:28px; }
+  h1 { font-size:clamp(42px,13.2vw,62px); }
+  .hero-copy { font-size:13.5px; }
+  .hero-art { height:310px; min-height:310px; }
+  .orbit { width:260px; }
+  .workstation { width:min(300px,calc(100% - 20px)); }
+  .workstation-body { padding:16px; }
+  .work-title { font-size:25px; }
+  .work-list span { font-size:10px; }
+  .work-list small { font-size:8px; }
+  .work-footer { font-size:6.5px; }
+  .marquee { height:44px; }
+  .marquee-track { animation-duration:38s; }
+  .marquee span { padding:14px 16px; font-size:8px; }
+  .section { padding:66px 0; }
+  .section-title { font-size:44px; }
+  .numbers { gap:8px; }
+  .number { min-height:120px; padding:16px; }
+  .number b { font-size:36px; }
+  .number span { font-size:7.5px; }
+  .project-main h3 { font-size:54px; }
+}
 </style>
 </head>
 <body class="loading">
