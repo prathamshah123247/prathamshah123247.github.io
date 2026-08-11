@@ -4,8 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 type RGB = [number, number, number];
-const $ = <T extends Element = Element>(selector: string) =>
-  document.querySelector<T>(selector);
+const $ = <T extends Element = Element>(selector: string) => document.querySelector<T>(selector);
 const $$ = <T extends Element = Element>(selector: string) =>
   Array.from(document.querySelectorAll<T>(selector));
 
@@ -19,10 +18,7 @@ const initTheme = (): void => {
   if (saved === "light") body.classList.add("light");
   theme?.addEventListener("click", () => {
     body.classList.toggle("light");
-    localStorage.setItem(
-      "pratham-theme",
-      body.classList.contains("light") ? "light" : "dark",
-    );
+    localStorage.setItem("pratham-theme", body.classList.contains("light") ? "light" : "dark");
   });
 };
 
@@ -31,9 +27,7 @@ const initMobileNav = (): void => {
   const menu = $("#menu");
   if (!mobile || !menu) return;
 
-  const source = $$(".links a").map(
-    (link) => link.cloneNode(true) as HTMLAnchorElement,
-  );
+  const source = $$(".links a").map((link) => link.cloneNode(true) as HTMLAnchorElement);
   source.forEach((link) => mobile.append(link));
 
   menu.addEventListener("click", () => {
@@ -148,18 +142,14 @@ const initGsapMotion = (): void => {
 const initActiveNav = (): void => {
   const sections = $$<HTMLElement>("main section[id]");
   const links = $$(".links a");
-  if (!sections.length || !links.length || !("IntersectionObserver" in window))
-    return;
+  if (!sections.length || !links.length || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         links.forEach((link) =>
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === `#${entry.target.id}`,
-          ),
+          link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`),
         );
       });
     },
@@ -198,9 +188,7 @@ const initPointerEffects = (): void => {
   };
   follow();
 
-  const cards = $$(
-    ".skill,.award,.cert,.project-mini,.project-main,.contact-cta",
-  );
+  const cards = $$(".skill,.award,.cert,.project-mini,.project-main,.contact-cta");
   cards.forEach((card) => {
     card.addEventListener("mouseenter", () => ring.classList.add("big"));
     card.addEventListener("mouseleave", () => ring.classList.remove("big"));
@@ -230,14 +218,10 @@ const initPointerEffects = (): void => {
 
 const initTouchFeedback = (): void => {
   if (reduced || !coarse) return;
-  $$(
-    ".panel,.skill,.award,.cert,.project-mini,.project-main,.contact-cta",
-  ).forEach((card) => {
-    card.addEventListener(
-      "pointerdown",
-      () => card.classList.add("touch-active"),
-      { passive: true },
-    );
+  $$(".panel,.skill,.award,.cert,.project-mini,.project-main,.contact-cta").forEach((card) => {
+    card.addEventListener("pointerdown", () => card.classList.add("touch-active"), {
+      passive: true,
+    });
     ["pointerup", "pointercancel", "pointerleave"].forEach((type) => {
       card.addEventListener(type, () => card.classList.remove("touch-active"), {
         passive: true,
@@ -250,9 +234,7 @@ const initCounters = (): void => {
   if (reduced) return;
   const metricSection = $("#about .numbers");
   if (!metricSection || !("IntersectionObserver" in window)) return;
-  const values = $$("#about .number b").map(
-    (el) => el.textContent?.trim() ?? "",
-  );
+  const values = $$("#about .number b").map((el) => el.textContent?.trim() ?? "");
   const animate = (): void => {
     $$("#about .number b").forEach((element, index) => {
       const match = values[index]?.match(/^([\d.]+)([+%]?)$/);
